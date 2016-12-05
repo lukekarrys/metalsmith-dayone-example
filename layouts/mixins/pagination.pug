@@ -1,0 +1,6 @@
+mixin pagination(p)
+  if p.previous
+    a(href=`/${p.previous.path}`) Previous
+
+  if p.next
+    a(href=`/${p.next.path}`) Next

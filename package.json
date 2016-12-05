@@ -1,0 +1,54 @@
+{
+  "name": "metalsmith-dayone-example",
+  "description": "An example Metalsmith site built from Day One data.",
+  "version": "1.0.0",
+  "author": "Luke Karrys <luke@lukekarrys.com>",
+  "bugs": {
+    "url": "https://github.com/lukekarrys/metalsmith-dayone-example/issues"
+  },
+  "dependencies": {
+    "metalsmith": "^2.3.0",
+    "metalsmith-collections": "^0.9.0",
+    "metalsmith-copy": "^0.3.0",
+    "metalsmith-dayone": "^1.0.0",
+    "metalsmith-debug": "^1.1.0",
+    "metalsmith-layouts": "^1.7.0",
+    "metalsmith-pagination": "^1.4.0",
+    "metalsmith-permalinks": "^0.5.0",
+    "metalsmith-tags": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "pug": "^2.0.0-beta6",
+    "rimraf": "^2.5.4"
+  },
+  "devDependencies": {
+    "git-directory-deploy": "^1.5.1",
+    "git-validate": "^2.2.2",
+    "http-server": "^0.9.0",
+    "standard": "^8.6.0"
+  },
+  "homepage": "https://github.com/lukekarrys/metalsmith-dayone-example#readme",
+  "keywords": [
+    "blog",
+    "dayone",
+    "journal",
+    "metalsmith"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "pre-commit": [
+    "lint",
+    "validate"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lukekarrys/metalsmith-dayone-example.git"
+  },
+  "scripts": {
+    "build": "node index",
+    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | jq -r '.repository.url'` --message='--skip-ci'",
+    "lint": "standard",
+    "preview": "http-server build -p 8080",
+    "validate": "npm ls"
+  }
+}

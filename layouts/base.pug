@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title= `${title ? `${title} | ` : ''}${sitetitle}`
+
+  body
+    nav
+      ul
+        li: a(href='/') Home
+        li: a(href='/tags') Tags
+
+    block content
