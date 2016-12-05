@@ -5,7 +5,7 @@ An example Metalsmith site built from Day One data.
 
 ## Demo
 
-There is a prebuilt demo in the [`gh-pages`](tree/gh-pages) branch or check out the [deployed version](https://lukekarrys.github.io/metalsmith-dayone-example/).
+There is a prebuilt demo in the [`gh-pages`](./tree/gh-pages) branch or check out the [deployed version](https://lukekarrys.github.io/metalsmith-dayone-example).
 
 
 ## Usage
