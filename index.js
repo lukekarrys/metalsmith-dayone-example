@@ -10,10 +10,9 @@ const pagination = require('metalsmith-pagination')
 const copy = require('metalsmith-copy')
 const dayone = require('metalsmith-dayone')
 
-const { prefix: PREFIX, data: DATA } = require('minimist')(process.argv.slice(2), {
+const { data: DATA } = require('minimist')(process.argv.slice(2), {
   default: {
-    data: 'Metalsmith_Example.zip',
-    prefix: '/'
+    data: 'Metalsmith_Example.zip'
   }
 })
 
@@ -36,8 +35,7 @@ Metalsmith(__dirname)
 
   // Add some site wide metadata
   .metadata({
-    sitetitle: 'Day One Blog',
-    urlPrefix: `${PREFIX.startsWith('/') ? '' : '/'}${PREFIX}${PREFIX.endsWith('/') ? '' : '/'}`
+    sitetitle: 'Day One Blog'
   })
 
   // Parse Day One data and specify layout & path for each entry
@@ -60,7 +58,8 @@ Metalsmith(__dirname)
 
   // As well as a tags list page
   .use((files) => Object.assign(files, {
-    'tags.html': { layout: 'tags.pug', contents: '' }
+    'tags.html': { layout: 'tags.pug', contents: '' },
+    CNAME: { contents: 'metalsmith-dayone.lukecod.es' }
   }))
 
   // Create entries collection for the index page
