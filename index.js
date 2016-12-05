@@ -10,17 +10,25 @@ const pagination = require('metalsmith-pagination')
 const copy = require('metalsmith-copy')
 const dayone = require('metalsmith-dayone')
 
-const { data: DATA } = require('minimist')(process.argv.slice(2), {
+const SRC = `${__dirname}/src`
+const {
+  data: DATA,
+  domain: DOMAIN,
+  sort: SORT_BY,
+  items: PER_PAGE,
+  reverse: REVERSE,
+  path: ENTRIES
+} = require('minimist')(process.argv.slice(2), {
+  boolean: ['reverse'],
   default: {
-    data: 'Metalsmith_Example.zip'
+    data: 'Metalsmith_Example.zip',
+    domain: 'metalsmith-dayone.lukecod.es',
+    sort: 'date',
+    items: 10,
+    reverse: true,
+    path: 'entries'
   }
 })
-
-const SRC = `${__dirname}/src`
-const ENTRIES = 'entries'
-const SORT_BY = 'date'
-const PER_PAGE = 10
-const REVERSE = true
 
 // Metalsmith needs a source directory to not throw an error but all the site
 // data will be built from the Day One zip file. So just create an empty directory
@@ -58,8 +66,7 @@ Metalsmith(__dirname)
 
   // As well as a tags list page
   .use((files) => Object.assign(files, {
-    'tags.html': { layout: 'tags.pug', contents: '' },
-    CNAME: { contents: 'metalsmith-dayone.lukecod.es' }
+    'tags.html': { layout: 'tags.pug', contents: '' }
   }))
 
   // Create entries collection for the index page
@@ -95,6 +102,11 @@ Metalsmith(__dirname)
   .use(layouts({
     engine: 'pug',
     directory: 'layouts'
+  }))
+
+  // Add a CNAME file for github pages custom domain
+  .use((files) => Object.assign(files, {
+    CNAME: { contents: DOMAIN }
   }))
 
   // Add debug plugin since stuff always goes wrong
