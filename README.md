@@ -5,7 +5,7 @@ An example Metalsmith site built from Day One data.
 
 ## Demo
 
-There is a prebuilt demo in the [`gh-pages`]() branch or check out the [deployed version]().
+There is a prebuilt demo in the [`gh-pages`](tree/gh-pages) branch or check out the [deployed version](https://lukekarrys.github.io/metalsmith-dayone-example/).
 
 
 ## Usage
@@ -24,3 +24,7 @@ npm run build -- --data your-dayone.zip
 # npm run build 
 npm run preview
 ```
+
+## LICENSE
+
+MIT

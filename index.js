@@ -10,12 +10,14 @@ const pagination = require('metalsmith-pagination')
 const copy = require('metalsmith-copy')
 const dayone = require('metalsmith-dayone')
 
-// Bring your own zip file if you want
-const [, data = 'Metalsmith_Example.zip'] = process.argv.slice(2)
-  .join(' ')
-  .match(/--data[\s=](.*)/) || []
+const { prefix: PREFIX, data: DATA } = require('minimist')(process.argv.slice(2), {
+  default: {
+    data: 'Metalsmith_Example.zip',
+    prefix: '/'
+  }
+})
 
-const src = `${__dirname}/src`
+const SRC = `${__dirname}/src`
 const ENTRIES = 'entries'
 const SORT_BY = 'date'
 const PER_PAGE = 10
@@ -24,22 +26,23 @@ const REVERSE = true
 // Metalsmith needs a source directory to not throw an error but all the site
 // data will be built from the Day One zip file. So just create an empty directory
 // which will be removed after the build
-mkdirp.sync(src)
+mkdirp.sync(SRC)
 
 // Normal metalsmith setup
 Metalsmith(__dirname)
-  .source(src)
+  .source(SRC)
   .destination('./build')
   .clean(true)
 
   // Add some site wide metadata
   .metadata({
-    sitetitle: 'Day One Blog'
+    sitetitle: 'Day One Blog',
+    urlPrefix: `${PREFIX.startsWith('/') ? '' : '/'}${PREFIX}${PREFIX.endsWith('/') ? '' : '/'}`
   })
 
   // Parse Day One data and specify layout & path for each entry
   .use(dayone({
-    data,
+    data: DATA,
     layout: 'entry.pug',
     path: `${ENTRIES}/:id.html`
   }))
@@ -99,4 +102,4 @@ Metalsmith(__dirname)
   .use(debug())
 
   // Build site and remove source directory
-  .build(() => rimraf.sync(src))
+  .build(() => rimraf.sync(SRC))
