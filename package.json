@@ -47,7 +47,7 @@
   },
   "scripts": {
     "build": "node index",
-    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | jq -r '.repository.url'` --message='[skip-ci]",
+    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | jq -r '.repository.url'` --message='[skip-ci]'",
     "lint": "standard",
     "preview": "http-server build -p 8080",
     "validate": "npm ls"
