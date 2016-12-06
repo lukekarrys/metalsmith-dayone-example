@@ -27,6 +27,9 @@
     "http-server": "^0.9.0",
     "standard": "^8.6.0"
   },
+  "engines": {
+    "node": "^6.0.0"
+  },
   "homepage": "https://github.com/lukekarrys/metalsmith-dayone-example#readme",
   "keywords": [
     "blog",
@@ -47,7 +50,10 @@
   },
   "scripts": {
     "build": "node index",
-    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | jq -r '.repository.url'` --message='[skip-ci]'",
+    "codeship-deploy": "npm run deploy",
+    "codeship-setup": "npm install && npm run build",
+    "codeship-test": "npm run lint && npm run validate",
+    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | jq -r '.repository.url'` --message='--skip-ci'",
     "lint": "standard",
     "preview": "http-server build -p 8080",
     "validate": "npm ls"

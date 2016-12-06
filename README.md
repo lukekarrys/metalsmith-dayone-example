@@ -2,7 +2,7 @@
 
 An example Metalsmith site built from Day One data.
 
-[![Build Status](https://travis-ci.org/lukekarrys/metalsmith-dayone-example.png?branch=master)](https://travis-ci.org/lukekarrys/metalsmith-dayone-example)
+[ ![Codeship Status for lukekarrys/metalsmith-dayone-example](https://codeship.com/projects/15339330-9da2-0134-14f0-1a706822621a/status?branch=master)](https://codeship.com/projects/188701)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 
