@@ -1,2 +1,19 @@
 mixin entryLink(entry)
-  a(href=`/${entry.path}`) #{entry.date} – #{entry.title}
+  section.entry
+    header.entry-header
+      h2.entry-title: a(href=`/${entry.path}`)= entry.title
+      p.entry-meta
+        | Posted #{entry.date}
+        | 
+        each tag in entry.tags
+          a.entry-category(href=`/tags/${tag.slug}`)= tag.name
+
+    .entry-description
+      if (entry.description)
+        p= entry.description
+
+      if (entry.photos)
+        .entry-images.pure-g
+          each photo in entry.photos.slice(0, 4)
+            .pure-u-1.pure-u-md-1-4
+              img.pure-img-responsive(src=`/${photo.path}`)

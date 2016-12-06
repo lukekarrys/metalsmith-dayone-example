@@ -2,10 +2,13 @@
 
 An example Metalsmith site built from Day One data.
 
+[![Build Status](https://travis-ci.org/lukekarrys/metalsmith-dayone-example.png?branch=master)](https://travis-ci.org/lukekarrys/metalsmith-dayone-example)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
 
 ## Demo
 
-There is a prebuilt demo in the [`gh-pages`](../../tree/gh-pages) branch or check out the [deployed version](http://metalsmith-dayone.lukecod.es).
+You can check out the [deployed version](http://metalsmith-dayone.lukecod.es) or the built source in the [`gh-pages` branch](../../tree/gh-pages).
 
 
 ## Features
@@ -15,14 +18,14 @@ There is a prebuilt demo in the [`gh-pages`](../../tree/gh-pages) branch or chec
 - Tags list page
 - Custom domain
 - Deploy to GitHub pages
-- `pug` templates
+- `pug` template layouts
 
 
 ## Usage
 
-This is mostly a collection of Metalsmith plugins that produces a site with all the features I'd want to publish a [Day One](http://dayoneapp.com/) journal. I tried to comment everything that's going on in the [`index.js`](./index.js) file, so it'd be at least semi-understandable.
+This is mostly a collection of Metalsmith plugins that produces a site with all the features I'd want to publish a [Day One](http://dayoneapp.com/) journal as a blog. I tried to comment everything that's going on in the [`index.js`](./index.js) file, so it'd be at least semi-understandable.
 
-This is just an example, so there's no way to use it directly in your Metalsmith site, but all the Day One data parsing is in the plugin [`metalsmith-dayone`](https://github.com/lukekarrys/metalsmith-dayone) if you wanted to do something different with the data.
+This is just an example, so there's no way to use it directly in your Metalsmith site, but all the Day One data parsing is in the plugin [`metalsmith-dayone`](https://github.com/lukekarrys/metalsmith-dayone) if you wanted to do your own thing with the data.
 
 ### Use your own data
 
@@ -36,6 +39,7 @@ npm install
 npm run build -- --data your-dayone.zip 
 npm run preview
 ```
+
 
 ## LICENSE
 

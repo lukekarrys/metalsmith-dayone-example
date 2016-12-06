@@ -4,10 +4,10 @@ include mixins/pagination
 include mixins/entry-link
 
 block content
-  h1 Entries #{pagination.num}
+  .entries
+    h1.content-subhead Entries #{pagination.num} / #{pagination.pages.length}
 
-  ul
     each entry in pagination.files
-      li: +entryLink(entry)
+      +entryLink(entry)
 
-  +pagination(pagination)
+    +pagination(pagination)

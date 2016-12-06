@@ -1,6 +1,7 @@
 mixin pagination(p)
-  if p.previous
-    a(href=`/${p.previous.path}`) Previous
-
-  if p.next
-    a(href=`/${p.next.path}`) Next
+  nav.nav
+    ul.nav-list
+      if p.previous
+        li.nav-item: a.pure-button(href=`/${p.previous.path}`) Previous
+      if p.next
+        li.nav-item: a.pure-button(href=`/${p.next.path}`) Next

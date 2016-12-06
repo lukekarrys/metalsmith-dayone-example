@@ -1,4 +1,14 @@
 extends base
 
+include mixins/pagination
+
 block content
-  main!= contents
+  main.entry
+    nav.nav
+      ul.nav-list
+        each tag in tags
+          li.nav-item: a.pure-button(href=`/tags/${tag.slug}`) #{tag.name}
+
+    | !{contents}
+
+    +pagination({ next, previous })

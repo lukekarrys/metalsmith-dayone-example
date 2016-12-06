@@ -1,8 +1,10 @@
 extends base
 
 block content
-  h1 Tags
+  .entries
+    h1.content-subhead Tags
 
-  ul
-    for data, tag in tags
-      li: a(href=`/tags/${data.urlSafe}`) #{tag}
+    nav.nav
+      ul.nav-list
+        for data, tag in tags
+          li.nav-item: a.pure-button(href=`/tags/${data.urlSafe}`) #{tag}

@@ -1,5 +1,3 @@
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
 const Metalsmith = require('metalsmith')
 const debug = require('metalsmith-debug')
 const layouts = require('metalsmith-layouts')
@@ -10,10 +8,8 @@ const pagination = require('metalsmith-pagination')
 const copy = require('metalsmith-copy')
 const dayone = require('metalsmith-dayone')
 
-const SRC = `${__dirname}/src`
 const {
   data: DATA,
-  domain: DOMAIN,
   sort: SORT_BY,
   items: PER_PAGE,
   reverse: REVERSE,
@@ -22,28 +18,26 @@ const {
   boolean: ['reverse'],
   default: {
     data: 'Metalsmith_Example.zip',
-    domain: 'metalsmith-dayone.lukecod.es',
     sort: 'date',
-    items: 10,
+    items: 5,
     reverse: true,
     path: 'entries'
   }
 })
 
-// Metalsmith needs a source directory to not throw an error but all the site
-// data will be built from the Day One zip file. So just create an empty directory
-// which will be removed after the build
-mkdirp.sync(SRC)
-
 // Normal metalsmith setup
 Metalsmith(__dirname)
-  .source(SRC)
+  .source('./src')
   .destination('./build')
   .clean(true)
 
   // Add some site wide metadata
   .metadata({
-    sitetitle: 'Day One Blog'
+    site: {
+      title: 'Day One Blog',
+      description: 'A blog from Day One',
+      author: 'Luke'
+    }
   })
 
   // Parse Day One data and specify layout & path for each entry
@@ -96,7 +90,9 @@ Metalsmith(__dirname)
   }))
 
   // Move all path.html to path/index.html for better linking
-  .use(permalinks())
+  .use(permalinks({
+    relative: false
+  }))
 
   // Finally use pug as the templating engine for all the layouts
   .use(layouts({
@@ -104,13 +100,10 @@ Metalsmith(__dirname)
     directory: 'layouts'
   }))
 
-  // Add a CNAME file for github pages custom domain
-  .use((files) => Object.assign(files, {
-    CNAME: { contents: DOMAIN }
-  }))
-
   // Add debug plugin since stuff always goes wrong
   .use(debug())
 
-  // Build site and remove source directory
-  .build(() => rimraf.sync(SRC))
+  // Build site
+  .build((err) => {
+    if (err) throw err
+  })

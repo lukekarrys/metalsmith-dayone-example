@@ -1,12 +1,36 @@
 doctype html
 html
   head
-    title= `${title ? `${title} | ` : ''}${sitetitle}`
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport',content='width=device-width,initial-scale=1.0,maximum-scale=1.0')
+    meta(name='description', content=site.description)
+    meta(name='author', content=site.author)
+
+    title= `${title ? `${title} | ` : ''}${site.title}`
+
+    link(rel='stylesheet', href='https://unpkg.com/purecss@0.6.0/build/pure-min.css')
+    link(rel='stylesheet', href='https://unpkg.com/purecss@0.6.0/build/grids-responsive-min.css')
+    link(rel='stylesheet', href='/css/main.css')
 
   body
-    nav
-      ul
-        li: a(href=`/`) Home
-        li: a(href=`/tags`) Tags
+    #layout.pure-g
+      .sidebar.pure-u-1.pure-u-md-1-4
+        header.header
+          h1.brand-title #{site.title}
+          h1.brand-tagline #{site.description}
 
-    block content
+          nav.nav
+            ul.nav-list
+              li.nav-item: a.pure-button(href='/') Home
+              li.nav-item: a.pure-button(href='/tags') Tags
+
+      .content.pure-u-1.pure-u-md-3-4
+        div
+          block content
+
+          footer.footer
+            .pure-menu.pure-menu-horizontal
+              ul
+                li.pure-menu-item
+                  a.pure-menu-link(href='https://github.com/lukekarrys/metalsmith-dayone-example') GitHub
