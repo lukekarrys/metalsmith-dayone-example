@@ -13,7 +13,8 @@ const {
   sort: SORT_BY,
   items: PER_PAGE,
   reverse: REVERSE,
-  path: ENTRIES
+  path: ENTRIES,
+  destination: DEST
 } = require('minimist')(process.argv.slice(2), {
   boolean: ['reverse'],
   default: {
@@ -21,14 +22,15 @@ const {
     sort: 'date',
     items: 5,
     reverse: true,
-    path: 'entries'
+    path: 'entries',
+    destination: './build'
   }
 })
 
 // Normal metalsmith setup
 Metalsmith(__dirname)
   .source('./src')
-  .destination('./build')
+  .destination(DEST)
   .clean(true)
 
   // Add some site wide metadata
