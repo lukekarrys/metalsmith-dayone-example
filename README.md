@@ -1,5 +1,7 @@
 # metalsmith-dayone-example
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukekarrys/metalsmith-dayone-example.svg)](https://greenkeeper.io/)
+
 An example Metalsmith site built from Day One data.
 
 [ ![Codeship Status for lukekarrys/metalsmith-dayone-example](https://codeship.com/projects/15339330-9da2-0134-14f0-1a706822621a/status?branch=master)](https://codeship.com/projects/188701)
