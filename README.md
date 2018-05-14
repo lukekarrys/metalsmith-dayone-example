@@ -8,7 +8,7 @@ An example Metalsmith site built from Day One data.
 
 ## Demo
 
-You can check out the [deployed version](http://metalsmith-dayone.lukecod.es) or the built source in the [`gh-pages` branch](../../tree/gh-pages).
+You can check out the [deployed version](https://metalsmith-dayone.lukecod.es) or the built source in the [`gh-pages` branch](../../tree/gh-pages).
 
 
 ## Features
