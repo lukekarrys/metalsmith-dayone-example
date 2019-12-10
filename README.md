@@ -2,13 +2,9 @@
 
 An example Metalsmith site built from Day One data.
 
-[ ![Codeship Status for lukekarrys/metalsmith-dayone-example](https://codeship.com/projects/15339330-9da2-0134-14f0-1a706822621a/status?branch=master)](https://codeship.com/projects/188701)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-
-
 ## Demo
 
-You can check out the [deployed version](https://metalsmith-dayone.lukecod.es) or the built source in the [`gh-pages` branch](../../tree/gh-pages).
+You can check out the [deployed version](https://metalsmith-dayone.lukecod.es).
 
 
 ## Features

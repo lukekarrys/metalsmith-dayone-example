@@ -22,7 +22,6 @@
     "rimraf": "^2.5.4"
   },
   "devDependencies": {
-    "git-directory-deploy": "^1.5.1",
     "git-validate": "^2.2.2",
     "http-server": "^0.10.0",
     "json": "^9.0.4",
@@ -41,8 +40,7 @@
   "license": "MIT",
   "main": "index.js",
   "pre-commit": [
-    "lint",
-    "validate"
+    "lint"
   ],
   "private": true,
   "repository": {
@@ -51,12 +49,7 @@
   },
   "scripts": {
     "build": "node index",
-    "codeship-deploy": "npm run deploy",
-    "codeship-setup": "npm install && npm run build",
-    "codeship-test": "npm run lint && npm run validate",
-    "deploy": "git-directory-deploy --directory build --username lukekarrys --email lukekarrys@gmail.com --repo `cat package.json | json repository.url` --message='--skip-ci'",
     "lint": "standard",
-    "preview": "http-server build -p 8080",
-    "validate": "npm ls"
+    "start": "http-server build -p 8080"
   }
 }
