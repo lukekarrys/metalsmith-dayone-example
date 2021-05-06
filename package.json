@@ -24,7 +24,7 @@
   "devDependencies": {
     "git-validate": "^2.2.2",
     "http-server": "^0.10.0",
-    "json": "^9.0.4",
+    "json": "^10.0.0",
     "standard": "^10.0.0"
   },
   "engines": {
